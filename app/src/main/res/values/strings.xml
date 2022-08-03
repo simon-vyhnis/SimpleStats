@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SimpleStats</string>
+    <string name="empty_state">No registers yet, click + to add one</string>
+    <string name="add">add</string>
+    <string name="name">Name:</string>
+    <string name="include_values">Include values</string>
+    <string name="create_register">Create Register</string>
+    <string name="register_name_hint">Rain Evidence</string>
 </resources>
