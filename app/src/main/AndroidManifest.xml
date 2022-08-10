@@ -20,6 +20,8 @@
         </activity>
         <activity
             android:name=".ui.CreateActivity"/>
+        <activity
+            android:name=".ui.EventActivity"/>
     </application>
 
 </manifest>

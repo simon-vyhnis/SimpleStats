@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadData(){
-        val viewModel = ViewModelProvider(this)[CreateViewModel::class.java]
+        val viewModel = ViewModelProvider(this)[StatsViewModel::class.java]
         val emptyStateText = findViewById<TextView>(R.id.emtpy_state_text)
         val recyclerView = findViewById<RecyclerView>(R.id.register_list)
         viewModel.getRegisterList().observe(this) {

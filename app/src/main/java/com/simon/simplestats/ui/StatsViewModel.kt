@@ -10,7 +10,7 @@ import com.simon.simplestats.data.Event
 import com.simon.simplestats.data.Register
 import kotlinx.coroutines.launch
 
-class CreateViewModel(context: Application) : AndroidViewModel(context) {
+class StatsViewModel(context: Application) : AndroidViewModel(context) {
     private val db: AppDatabase = Room.databaseBuilder(
         context,
         AppDatabase::class.java,
@@ -30,6 +30,10 @@ class CreateViewModel(context: Application) : AndroidViewModel(context) {
 
     fun addRegister(register: Register) = viewModelScope.launch{
         registerDao.addRegister(register)
+    }
+
+    fun getEvents(registerId: Int) : LiveData<List<Event>>{
+        return registerDao.getEvents(registerId)
     }
 
 }

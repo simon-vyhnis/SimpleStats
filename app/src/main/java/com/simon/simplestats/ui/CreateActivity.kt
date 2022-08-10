@@ -13,7 +13,7 @@ class CreateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create)
-        val viewModel = ViewModelProvider(this)[CreateViewModel::class.java]
+        val viewModel = ViewModelProvider(this)[StatsViewModel::class.java]
 
         val button = findViewById<Button>(R.id.button_add)
         val nameEditText = findViewById<EditText>(R.id.input_name)

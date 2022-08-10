@@ -1,6 +1,6 @@
 package com.simon.simplestats.ui
 
-import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,12 +8,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.simon.simplestats.R
 import com.simon.simplestats.data.Event
 import com.simon.simplestats.data.Register
 
-class RegistersViewAdapter (private val registerList: List<Register>, private val viewModel : CreateViewModel, private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RegistersViewAdapter (private val registerList: List<Register>, private val viewModel : StatsViewModel, private val activity: AppCompatActivity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if(viewType == 0) {
@@ -32,22 +33,23 @@ class RegistersViewAdapter (private val registerList: List<Register>, private va
                value?.let {
                    viewModel.addEvent(Event((System.currentTimeMillis()/1000), it, registerList[position].id))
                    viewHolder.editText.text.clear()
-                   Toast.makeText(context, "Value added", Toast.LENGTH_SHORT).show()
+                   Toast.makeText(activity, "Value added", Toast.LENGTH_SHORT).show()
                }
 
            }
            viewHolder.itemView.setOnClickListener {
-                //TODO go to display register activity
+
            }
        }else{
            val viewHolder = holder as ViewHolderWithoutValue
            viewHolder.name.text = registerList[position].name
            viewHolder.buttonAdd.setOnClickListener {
                viewModel.addEvent(Event((System.currentTimeMillis()/1000), null, registerList[position].id))
-               Toast.makeText(context, "Record added", Toast.LENGTH_SHORT).show()
+               Toast.makeText(activity, "Record added", Toast.LENGTH_SHORT).show()
            }
            viewHolder.itemView.setOnClickListener {
-                //TODO go to display register activity
+               val intent = Intent(activity, EventActivity::class.java)
+               activity.startActivity(intent)
            }
        }
     }
