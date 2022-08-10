@@ -15,7 +15,9 @@ class CreateViewModel(context: Application) : AndroidViewModel(context) {
         context,
         AppDatabase::class.java,
         "db"
-    ).build()
+    )
+        .fallbackToDestructiveMigration()
+        .build()
     private val registerDao = db.registerDao()
 
     fun addEvent(event: Event) = viewModelScope.launch{

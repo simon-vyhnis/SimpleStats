@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 emptyStateText.visibility = View.GONE
                 recyclerView.visibility = View.VISIBLE
                 recyclerView.layoutManager = LinearLayoutManager(this)
-                recyclerView.adapter = RegistersViewAdapter(it)
+                recyclerView.adapter = RegistersViewAdapter(it, viewModel, this)
             }else{
                 emptyStateText.visibility = View.VISIBLE
                 recyclerView.visibility = View.GONE
